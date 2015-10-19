@@ -21,7 +21,8 @@ namespace Snake
 			// drow point
 
 			Point point = new Point(40, 12, 'X');
-			point.Draw();
+			Snake snake = new Snake (point, 15, Direction.LEFT);
+			snake.Draw ();
 
 
 			Console.ReadLine ();
