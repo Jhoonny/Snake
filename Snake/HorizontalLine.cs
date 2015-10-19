@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Snake
 {
-	public class HorizontalLine : Figure
+	class HorizontalLine : Figure
 	{
 		
 		public HorizontalLine(int xLeft, int xRight, int y, char sym)

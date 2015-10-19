@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Snake
 {
-	public class Figure
+	class Figure
 	{
 		protected List<Point> pList;
 

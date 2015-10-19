@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Snake
 {
-	public class VerticalLine : Figure
+	class VerticalLine : Figure
 	{
 		public VerticalLine(int yUp, int yDown, int x, char sym)
 		{
