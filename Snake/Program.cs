@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Snake
 {
@@ -20,9 +21,14 @@ namespace Snake
 
 			// drow point
 
-			Point point = new Point(40, 12, 'X');
-			Snake snake = new Snake (point, 15, Direction.LEFT);
+			Point point = new Point(5, 10, '*');
+			Snake snake = new Snake (point, 5, Direction.RIGHT);
 			snake.Draw ();
+
+			for (int i = 0; i < 10; i++) {
+				snake.Move ();
+				Thread.Sleep (300);
+			}
 
 
 			Console.ReadLine ();
