@@ -37,5 +37,16 @@ namespace Snake
 			return nextPoint;
 		}
 	
+		public void Hadlekey(ConsoleKey key){
+			
+			if (key == ConsoleKey.LeftArrow)
+				direction = Direction.LEFT;
+			else if (key == ConsoleKey.RightArrow)
+				direction = Direction.RIGHT;
+			else if (key == ConsoleKey.DownArrow)
+				direction = Direction.DOWN;
+			else if (key == ConsoleKey.UpArrow)
+				direction = Direction.UP;
+		}
 	}
 }

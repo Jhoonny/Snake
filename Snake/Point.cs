@@ -27,9 +27,9 @@ namespace Snake
 			else if (direction == Direction.LEFT)
 				x = x - offset;
 			else if (direction == Direction.UP)
-				y = y + offset;
-			else
 				y = y - offset;
+			else
+				y = y + offset;
 		}
 
 		public void Draw(){

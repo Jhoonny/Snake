@@ -25,13 +25,22 @@ namespace Snake
 			Snake snake = new Snake (point, 5, Direction.RIGHT);
 			snake.Draw ();
 
-			for (int i = 0; i < 10; i++) {
-				snake.Move ();
+			while (true) {
+
+				if (Console.KeyAvailable) {
+					ConsoleKeyInfo key = Console.ReadKey ();
+					snake.Hadlekey (key.Key);
+
+					if (key.Key == ConsoleKey.Escape)
+						break;
+				}
 				Thread.Sleep (300);
+				snake.Move ();
 			}
 
-
-			Console.ReadLine ();
+			Console.WriteLine ("--==--  E N D  --==--");
+			Thread.Sleep (300);
+			//Console.ReadLine ();
 		}
 	}
 }
