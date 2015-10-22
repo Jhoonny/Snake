@@ -59,5 +59,21 @@ namespace Snake
 			} else 
 				return false;
 		}
+
+		public override void Draw ()
+		{
+			Console.ForegroundColor = ConsoleColor.Yellow;
+			base.Draw ();
+			//Console.ForegroundColor = ConsoleColor.White;
+
+		}
+
+		internal bool IsHitTail(){
+			var head = pList.Last();
+			for (int i = 0; i < pList.Count - 2; i++) 
+				if(head.IsHit(pList[i])) return true;
+		return false;
+		}
+
 	}
 }

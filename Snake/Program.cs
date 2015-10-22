@@ -11,18 +11,12 @@ namespace Snake
 			int MaxMapWidth = 80;
 			int MaxMapHeight = 25;
 
-
 			Console.SetBufferSize(MaxMapWidth, MaxMapHeight);
-			// drow frame
-			HorizontalLine upLine = new HorizontalLine(0,78,0,'*');
-			HorizontalLine downLinw = new HorizontalLine(0,78,24,'*');
-			VerticalLine leftLine = new VerticalLine(0,24,0,'*');
-			VerticalLine rightLine = new VerticalLine(0,24, 78, '*');
 
-			upLine.Draw();
-			downLinw.Draw();
-			leftLine.Draw();
-			rightLine.Draw();
+			// drow frame
+			Walls walls = new Walls(MaxMapWidth, MaxMapHeight);
+			walls.Draw();
+			
 
 			// drow point draw snake
 
@@ -34,9 +28,14 @@ namespace Snake
 
 			FoodCreater foodCreator = new FoodCreater (MaxMapWidth, MaxMapHeight, '$');
 			Point food = foodCreator.CreateFood ();
+			//Console.ForegroundColor = ConsoleColor.Cyan;
 			food.Draw ();
 
 			while (true) {
+				// data de perete
+				if (walls.IsHit (snake) || snake.IsHitTail()) break;
+
+				// daca maninca
 
 				if(snake.Eat(food)){
 					food = foodCreator.CreateFood ();
@@ -45,7 +44,7 @@ namespace Snake
 				else
 					snake.Move ();
 				
-				Thread.Sleep (300);
+				Thread.Sleep (200);
 			
 
 				if (Console.KeyAvailable) {
@@ -57,10 +56,17 @@ namespace Snake
 				}
 
 			}
+			// END
 
+
+			Console.ForegroundColor = ConsoleColor.Red;
+			Console.SetCursorPosition(MaxMapWidth/3 , 10);
 			Console.WriteLine ("--=***=--  E N D  --=***=--");
-			Thread.Sleep (300);
+			Console.SetCursorPosition(MaxMapWidth/3 , 12);
+			//Thread.Sleep (300);
 			//Console.ReadLine ();
+
+
 		}
 	}
 }
