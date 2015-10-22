@@ -7,7 +7,12 @@ namespace Snake
 	{
 		public static void Main (string[] args)
 		{
-			Console.SetBufferSize(80, 25);
+			// size of map
+			int MaxMapWidth = 80;
+			int MaxMapHeight = 25;
+
+
+			Console.SetBufferSize(MaxMapWidth, MaxMapHeight);
 			// drow frame
 			HorizontalLine upLine = new HorizontalLine(0,78,0,'*');
 			HorizontalLine downLinw = new HorizontalLine(0,78,24,'*');
@@ -19,13 +24,29 @@ namespace Snake
 			leftLine.Draw();
 			rightLine.Draw();
 
-			// drow point
+			// drow point draw snake
 
 			Point point = new Point(5, 10, '*');
 			Snake snake = new Snake (point, 5, Direction.RIGHT);
 			snake.Draw ();
 
+			// draw food
+
+			FoodCreater foodCreator = new FoodCreater (MaxMapWidth, MaxMapHeight, '$');
+			Point food = foodCreator.CreateFood ();
+			food.Draw ();
+
 			while (true) {
+
+				if(snake.Eat(food)){
+					food = foodCreator.CreateFood ();
+					food.Draw ();
+				}
+				else
+					snake.Move ();
+				
+				Thread.Sleep (300);
+			
 
 				if (Console.KeyAvailable) {
 					ConsoleKeyInfo key = Console.ReadKey ();
@@ -34,11 +55,10 @@ namespace Snake
 					if (key.Key == ConsoleKey.Escape)
 						break;
 				}
-				Thread.Sleep (300);
-				snake.Move ();
+
 			}
 
-			Console.WriteLine ("--==--  E N D  --==--");
+			Console.WriteLine ("--=***=--  E N D  --=***=--");
 			Thread.Sleep (300);
 			//Console.ReadLine ();
 		}
